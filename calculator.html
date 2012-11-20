@@ -1,0 +1,140 @@
+<html>
+<body>
+<form name="Calculator" action="">
+<table>
+<B>
+<table class="calci" border=3 width=400 height=270 cellpadding=1 cellspacing=5>
+<tr>
+<TD colspan=5 align=middle>
+<input id="display" name="finalOutput" type="Text" size=40 value="0" width=100% style="height: 70px; width: 530px">
+</TD>
+</tr>
+<tr>
+<td>
+<center><input name="btnSeven" type="Button" value="7" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td>
+<center><input name="btnEight" type="Button" value="8" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td>
+<center><input name="btnNine" type="Button" value="9" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td>
+<center><input name="btnClear" type="Button" value="C" onclick="Clear()" style="height: 100px; width: 100px"></center>
+</td>
+<td><center><input name="btnClearEntry" type="Button" value="CE " onclick="ClearEntry()" style="height: 100px; width: 100px"></center>
+</td>
+</tr>
+<tr>
+<td>
+<center><input name="btnFour" type="Button" value="4" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td>
+<center><input name="btnFive" type="Button" value="5" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td>
+<center><input name="btnSix" type="Button" value="6" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td align=middle><center><input name="btnPlus" type="Button" value="+" onclick="calculation(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td align=middle><center><input name="btnMinus" type="Button" value="-" onclick="calculation(this)" style="height: 100px; width: 100px"></center>
+</td>
+</tr>
+<tr>
+<td>
+<center><input name="btnOne" type="Button" value="1" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td>
+<center><input name="btnTwo" type="Button" value="2" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td>
+<center><input name="btnThree" type="Button" value="3" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td align=middle><center><input name="btnMultiply" type="Button" value="*" onclick="calculation(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td align=middle><center><input name="btnDivide" type="Button" value="/" onclick="calculation(this)" style="height: 100px; width: 100px"></center>
+</td>
+</tr>
+<tr>
+<td>
+<center><input name="btnZero" type="Button" value="0" onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td>
+<center><input name="btnDecimal" type="Button" value="." onclick="numericSelected(this)" style="height: 100px; width: 100px"></center>
+</td>
+<td colspan=2>
+<center><input name="btnEquals" type="Button" value="=" onclick="calculation(this)" style="height: 100px; width: 200px"></center>
+</td>
+<td>
+<center><input name="btnPercent" type="Button" value="%" onclick="Percent()" style="height: 100px; width: 100px"></center>
+</td>
+</tr>
+</table>
+</table>
+</B>
+</form>
+</center>
+</body>
+<style type="text/css">
+input:focus {background: red;}
+input{font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 28pt;}
+</style>
+<SCRIPT LANGUAGE="JavaScript">
+Flag = false;
+var total = 0;
+function numericSelected(obj)
+{
+if(Flag){
+document.Calculator.finalOutput.value = obj.value;
+Flag = false;
+}else{
+if(document.Calculator.finalOutput.value == "0"){
+document.Calculator.finalOutput.value =	obj.value;
+}else{
+document.Calculator.finalOutput.value += obj.value; 
+}
+}
+console.log(this.document);	
+}
+function calculation(obj)
+{
+Flag = true;
+var operator = obj.value;
+var calPar = document.Calculator.finalOutput.value;
+if(operator != "="){
+switch (operator){
+    case "+":
+    total = parseInt(total) + parseInt(calPar); 
+    break;
+    case "-":
+    total = total - document.Calculator.finalOutput.value; 
+    break;
+    case "/":
+    total = total / document.Calculator.finalOutput.value; 
+    break;
+    case "*":
+    total = total * document.Calculator.finalOutput.value; 
+    break;	
+}	
+}else if(operator == "="){
+	document.Calculator.finalOutput.value = total; 
+}
+}
+function Percent()
+{
+
+}
+function Clear()
+{
+document.Calculator.finalOutput.value = 0;
+total = 0;
+Flag = false;
+}
+function ClearEntry()
+{
+document.Calculator.finalOutput.value = 0;
+total = 0;
+Flag = false;
+}
+</SCRIPT>
+</html>
